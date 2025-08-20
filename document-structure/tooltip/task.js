@@ -1,7 +1,6 @@
 document.addEventListener("click", (e) => {
     const target = e.target;
     const tooltipActiveEl = document.querySelector(".tooltip_active");
-    console.log(tooltipActiveEl)
     if (tooltipActiveEl) {
         tooltipActiveEl.classList.remove("tooltip_active");
     }
@@ -9,13 +8,19 @@ document.addEventListener("click", (e) => {
     if (target.classList.contains('has-tooltip')) {
         e.preventDefault();
 
+        const rect = target.getBoundingClientRect();
+        const x = rect.left;
+        const y = rect.top;
 
         const tooltipText = target.getAttribute("title");
         const tooltip = document.createElement("div");
+
         tooltip.className = "tooltip";
         tooltip.textContent = tooltipText;
-        tooltip.classList.add("tooltip");
-        tooltip.classList.add("tooltip_active");
+        tooltip.classList.add("tooltip", "tooltip_active");
+        tooltip.style.left = x + "px";
+        tooltip.style.top = y + 20 + "px";
+
 
         const parenNode = target.closest("a");
 
