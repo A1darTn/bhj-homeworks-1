@@ -1,3 +1,4 @@
+// С помощью даты созадается id, по которому осуществляется удаление задачи
 const form = document.querySelector(".tasks__control");
 const taskInput = document.querySelector(".tasks__input");
 const taskList = document.querySelector(".tasks__list");
@@ -12,7 +13,12 @@ if (localStorage.getItem("tasks")) {
 form.addEventListener("submit", (e) => {
     e.preventDefault();
 
-    const taskText = taskInput.value;
+    const taskText = taskInput.value.trim();
+
+    if (!taskText) {
+        return
+    }
+
     const newTask = {
         id: Date.now(),
         text: taskText

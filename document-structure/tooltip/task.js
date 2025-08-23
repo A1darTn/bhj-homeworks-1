@@ -22,8 +22,9 @@ document.addEventListener("click", (e) => {
         tooltip.style.top = y + 20 + "px";
 
 
-        const parenNode = target.closest("a");
+        // const parenNode = target.closest("a");
 
-        parenNode.appendChild(tooltip)
+        // parenNode.appendChild(tooltip)
+        document.body.appendChild(tooltip)
     }
 })

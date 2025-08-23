@@ -51,23 +51,12 @@ document.querySelectorAll('.product__add').forEach(button => {
             const currentCount = parseInt(countElement.textContent);
             countElement.textContent = currentCount + count;
         } else {
-            // Если товара нет, создаем новый элемент
-            const cartProduct = document.createElement('div');
-            cartProduct.className = 'cart__product';
-            cartProduct.dataset.id = id;
+            const cartProduct = `<div class="cart__product" data-id="${id}">
+                <img class="cart__product-image" src="${imageSrc}">
+                <div class="cart__product-count">${count}</div>
+            </div>`
 
-            const productImage = document.createElement('img');
-            productImage.className = 'cart__product-image';
-            productImage.src = imageSrc;
-
-            const productCount = document.createElement('div');
-            productCount.className = 'cart__product-count';
-            productCount.textContent = count;
-
-            cartProduct.appendChild(productImage);
-            cartProduct.appendChild(productCount);
-
-            document.querySelector('.cart__products').appendChild(cartProduct);
+            document.querySelector('.cart__products').insertAdjacentHTML("beforeend", cartProduct)
         }
 
         updateCartVisibility();
