@@ -1,3 +1,5 @@
+const tooltip = document.querySelector(".tooltip");
+
 document.addEventListener("click", (e) => {
     const target = e.target;
     const tooltipActiveEl = document.querySelector(".tooltip_active");
@@ -13,18 +15,12 @@ document.addEventListener("click", (e) => {
         const y = rect.top;
 
         const tooltipText = target.getAttribute("title");
-        const tooltip = document.createElement("div");
 
-        tooltip.className = "tooltip";
         tooltip.textContent = tooltipText;
-        tooltip.classList.add("tooltip", "tooltip_active");
+        tooltip.classList.add("tooltip_active");
         tooltip.style.left = x + "px";
         tooltip.style.top = y + 20 + "px";
 
-
-        // const parenNode = target.closest("a");
-
-        // parenNode.appendChild(tooltip)
         document.body.appendChild(tooltip)
     }
 })
